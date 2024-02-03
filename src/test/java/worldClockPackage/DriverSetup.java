@@ -20,4 +20,9 @@ public class DriverSetUp {
 			  driver=new ChromeDriver();
 		  }
 		  return driver;
+	}
+	
+	public static void closeDriver() {
+		driver.close();
 }
+	}

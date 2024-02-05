@@ -6,11 +6,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-
-
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import org.testng.annotations.AfterClass;
@@ -35,23 +34,25 @@ public class testclooock {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().deleteAllCookies();
+		WebElement seeAll=driver.findElement(By.xpath("//*[@id=\"c24ff0ed-b166-42e5-b7d5-57c9a9e573cb\"]/div/div/div/p/a/span/strong"));
 		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,document.body.ScrollHeight)");
-	
+		js.executeScript("arguments[0].scrollIntoView();",seeAll);
 	}
 
 
 	@Test(priority = 1)
 	public static void Test_WorldClock_Title() {
 		wc=new POMclock(driver);
-		Assert.assertEquals(wc.checkclockbox(), true);
+		System.out.println(wc.checkclockbox().toLowerCase());
+		Assert.assertEquals(wc.checkclockbox().toLowerCase(), "world clock");
 	}
 
 	//India time
 	@Test(priority = 2)
 	void BangaloreWatch_Title() {
 		wc=new POMclock(driver);
-		Assert.assertEquals(wc.checkindiaclock(), true);
+		System.out.println(wc.checkindiaclock());
+		Assert.assertEquals(wc.checkindiaclock().toLowerCase(), "bangalore, india (ist)");
 	}
 
 	@Test(priority = 3)
@@ -81,7 +82,7 @@ public class testclooock {
 
 	void LondonWatch_Tittle() {
 
-		Assert.assertEquals(wc.checklonclock(), true);
+		Assert.assertEquals(wc.checklonclock().toLowerCase(), "london, uk (bst)");
 
 	}
 
@@ -111,7 +112,7 @@ public class testclooock {
 
 	void NY_Watchtittle() {
 
-		Assert.assertEquals(wc.nyclock(), true);
+		Assert.assertEquals(wc.nyclock().toLowerCase(), "new york, ny (est)");
 
 	}
 

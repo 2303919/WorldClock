@@ -12,17 +12,17 @@ public class POMclock {
 		PageFactory.initElements(driver,this);
 	}
 		//Title 
-	@FindBy(xpath="//*[@id=\"CaptionElementView\"]")
+	@FindBy(xpath="(//*[@id=\"CaptionElementView\"])[3]")
 	WebElement Title_clock;
 	//Bangalore, India (IST)
-	@FindBy(xpath="//*[@class=\"k_b_816e1fa6 bodyText-273\"][text()=\"Bangalore, India (IST)\"]") 
+	@FindBy(xpath="(//*[@data-automation-id=\"clock-card-location\"])[1]") 
 	WebElement india_loc;
 	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[1]/div/div/div/div[2]/div[1]")
 	WebElement india_time;
 	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[1]/div/div/div/div[2]/div[2]/div[2]")
 	WebElement day_date;
 	//london 
-	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[2]/div/div/div/div[1]")
+	@FindBy(xpath="(//*[@data-automation-id='clock-card-location'])[2]")
 	WebElement lon_loc;
 	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[2]/div/div/div/div[2]/div[1]")
 	WebElement lon_time;
@@ -31,7 +31,7 @@ public class POMclock {
 	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[2]/div/div/div/div[2]/div[2]/div[1]")
 	WebElement lon_ind_gap;
 	//NY
-	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[3]/div/div/div/div[1]")
+	@FindBy(xpath="(//*[@data-automation-id='clock-card-location'])[3]")
 	WebElement ny_loc;
 	@FindBy(xpath="//*[@id=\"vpc_WebPart.WorldClockWebPart.internal.60655e4a-73c8-49d0-9571-c762791557af\"]/div/div[2]/div/div/div/div/div/div[3]/div/div/div/div[2]/div[1]")
 	WebElement ny_time;
@@ -42,13 +42,13 @@ public class POMclock {
  
 	
 	//getting all time dates
-	public boolean checkclockbox(){
-		boolean present=Title_clock.isDisplayed();
+	public String checkclockbox(){
+		String present=Title_clock.getText();
 		return present;
 	}
 	//India Clock
-	public boolean checkindiaclock() {
-		boolean bangtitle=india_loc.isDisplayed();	
+	public String checkindiaclock() {
+		String bangtitle=india_loc.getText();	
 		return bangtitle;
 	}
 	public String checkindiatime() {
@@ -58,8 +58,8 @@ public class POMclock {
 		return day_date.getText();
 	}
 	//LONDON CLOCK
-	public boolean checklonclock() {
-		boolean lontitle=lon_loc.isDisplayed();
+	public String checklonclock() {
+		String lontitle=lon_loc.getText();
 		return lontitle;
 	}
 	public void checklontime() {
@@ -72,8 +72,8 @@ public class POMclock {
 		lon_ind_gap.getText();
 	}
 	//NY CLOCK
-	public boolean nyclock() {
-		boolean nytitle=ny_loc.isDisplayed();
+	public String nyclock() {
+		String nytitle=ny_loc.getText();
 		return nytitle;
 	}
 	public void checknytime() {

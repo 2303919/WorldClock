@@ -6,10 +6,6 @@
       <class name="worldClockPackage.testclooock">
         <methods>
           <include name="openpage"/>
-          <include name="BangaloreWatch_Title"/>
-          <include name="NY_Watchtittle"/>
-          <include name="Bangalore_Date"/>
-          <include name="LondonWatch_Tittle"/>
           <include name="close"/>
           <include name="Bangalore_Time"/>
         </methods>
